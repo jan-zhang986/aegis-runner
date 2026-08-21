@@ -17,7 +17,7 @@
 > 列出运行该项目所必须的条件和相关依赖  
 > 安装依赖 pip install -r requirements.txt
 > 导出依赖 pipreqs ./ --encoding=utf8 --force
-* python 3.8
+* python 3.12
 * fastapi
 * mysql
 
