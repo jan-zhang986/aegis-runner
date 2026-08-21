@@ -2,13 +2,13 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: vanguard-runner-worker-hpa
+  name: aegis-runner-worker-hpa
   namespace: default
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: vanguard-runner-worker
+    name: aegis-runner-worker
   minReplicas: 3  # 最少 3 个 Worker
   maxReplicas: 20  # 最多 20 个 Worker
   metrics:

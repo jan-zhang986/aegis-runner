@@ -86,7 +86,7 @@ pip install -r requirements.txt
 
 ```bash
 # 进入项目根目录
-cd /Users/jan/PycharmProjects/vanguard-runner/packages/engine
+cd /Users/jan/PycharmProjects/aegis-runner/packages/engine
 
 # 运行测试脚本
 python examples/run_xxljob_test.py
@@ -96,7 +96,7 @@ python examples/run_xxljob_test.py
 
 ```bash
 # 进入项目根目录
-cd /Users/jan/PycharmProjects/vanguard-runner/packages/engine
+cd /Users/jan/PycharmProjects/aegis-runner/packages/engine
 
 # 运行测试模块
 python -m examples.xxljob_processor_example

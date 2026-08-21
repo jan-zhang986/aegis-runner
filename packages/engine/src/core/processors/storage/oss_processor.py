@@ -12,7 +12,7 @@
 3. 删除 OSS 文件
 4. 下载的文件可供 HTTP 处理器使用
 
-参考 vanguard-runner 的 FileManager.py 实现
+参考 aegis-runner 的 FileManager.py 实现
 使用独立的 OssClient 封装 OSS 操作
 """
 

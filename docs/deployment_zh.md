@@ -1,4 +1,4 @@
-# Spotter Runner - K8s 部署指南
+# Aegis Runner - K8s 部署指南
 
 ## 🚀 快速部署（3 步完成）
 
@@ -66,8 +66,8 @@ vim deployments/k8s/secrets.yaml
    kubectl apply -f deployments/k8s/hpa.yaml -n default
    
    # 更新镜像
-   kubectl set image deployment/vanguard-runner-master master=registry.cn-hangzhou.aliyuncs.com/spotter/runner:${VERSION} -n default
-   kubectl set image deployment/vanguard-runner-worker worker=registry.cn-hangzhou.aliyuncs.com/spotter/runner-worker:${VERSION} -n default
+   kubectl set image deployment/aegis-runner-master master=registry.cn-hangzhou.aliyuncs.com/spotter/runner:${VERSION} -n default
+   kubectl set image deployment/aegis-runner-worker worker=registry.cn-hangzhou.aliyuncs.com/spotter/runner-worker:${VERSION} -n default
    ```
 
 #### 方式 B：手动部署
@@ -86,11 +86,11 @@ chmod +x deployments/scripts/deploy.sh
 
 ```bash
 # 查看 Pods 状态（应该都是 Running）
-kubectl get pods -l app=vanguard-runner -n default
+kubectl get pods -l app=aegis-runner -n default
 
 # 查看日志
-kubectl logs -f deployment/vanguard-runner-master -n default
-kubectl logs -f deployment/vanguard-runner-worker -n default
+kubectl logs -f deployment/aegis-runner-master -n default
+kubectl logs -f deployment/aegis-runner-worker -n default
 
 # 测试 API
 curl http://<service-ip>:8100/health
@@ -107,17 +107,17 @@ curl http://<service-ip>:8100/health
 ./deployments/scripts/scale-workers.sh 10
 
 # 方式 2：使用 kubectl
-kubectl scale deployment vanguard-runner-worker --replicas=10 -n default
+kubectl scale deployment aegis-runner-worker --replicas=10 -n default
 ```
 
 ### 查看状态
 
 ```bash
 # 查看 Pods
-kubectl get pods -l app=vanguard-runner -n default
+kubectl get pods -l app=aegis-runner -n default
 
 # 查看资源使用
-kubectl top pods -l app=vanguard-runner -n default
+kubectl top pods -l app=aegis-runner -n default
 
 # 查看自动扩缩容状态
 kubectl get hpa -n default
@@ -127,8 +127,8 @@ kubectl get hpa -n default
 
 ```bash
 # 更新镜像版本
-kubectl set image deployment/vanguard-runner-master master=registry.cn-hangzhou.aliyuncs.com/spotter/runner:v2.0.0 -n default
-kubectl set image deployment/vanguard-runner-worker worker=registry.cn-hangzhou.aliyuncs.com/spotter/runner-worker:v2.0.0 -n default
+kubectl set image deployment/aegis-runner-master master=registry.cn-hangzhou.aliyuncs.com/spotter/runner:v2.0.0 -n default
+kubectl set image deployment/aegis-runner-worker worker=registry.cn-hangzhou.aliyuncs.com/spotter/runner-worker:v2.0.0 -n default
 
 # 或者重新执行部署脚本
 ./deployments/scripts/deploy.sh prod
@@ -138,8 +138,8 @@ kubectl set image deployment/vanguard-runner-worker worker=registry.cn-hangzhou.
 
 ```bash
 # 回滚到上一个版本
-kubectl rollout undo deployment/vanguard-runner-master -n default
-kubectl rollout undo deployment/vanguard-runner-worker -n default
+kubectl rollout undo deployment/aegis-runner-master -n default
+kubectl rollout undo deployment/aegis-runner-worker -n default
 ```
 
 ---
@@ -168,14 +168,14 @@ kubectl logs <pod-name> -n default
 kubectl exec -it <kafka-pod> -- kafka-topics.sh --list --bootstrap-server localhost:9092
 
 # 检查 Worker 日志
-kubectl logs -f deployment/vanguard-runner-worker -n default
+kubectl logs -f deployment/aegis-runner-worker -n default
 ```
 
 ### 3. 内存不足
 
 ```bash
 # 增加内存限制
-kubectl edit deployment vanguard-runner-worker -n default
+kubectl edit deployment aegis-runner-worker -n default
 # 修改 resources.limits.memory 为更大的值（如 4Gi）
 ```
 

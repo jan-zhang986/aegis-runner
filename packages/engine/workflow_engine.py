@@ -1170,7 +1170,7 @@ if __name__ == "__main__":
     }
 
     # 实例化并执行
-    executor = WorkflowExecutor(workflow_data, hook_file="/Users/jan/PycharmProjects/vanguard-runner/hooks.py")
+    executor = WorkflowExecutor(workflow_data, hook_file="/Users/jan/PycharmProjects/aegis-runner/hooks.py")
     # 延迟导入避免循环导入
     # from packages.engine.src.core.streaming_executor import StreamingWorkflowExecutor
     # executor = StreamingWorkflowExecutor(workflow_data)

@@ -13,7 +13,7 @@ from typing import Union, Optional, Text, Any, Dict, List
 from pydantic import BaseModel
 
 # 历史接口 success_response_200 使用；无业务常量模块依赖
-_APP_HEADER = "vanguard-runner"
+_APP_HEADER = "aegis-runner"
 
 
 class BaseRespModel(BaseModel):

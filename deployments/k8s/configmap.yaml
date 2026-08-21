@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: vanguard-runner-config
+  name: aegis-runner-config
   namespace: default
 data:
   # 应用配置

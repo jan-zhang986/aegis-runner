@@ -9,7 +9,7 @@
 ### 步骤1：验证环境配置
 
 ```bash
-cd /Users/jan/PycharmProjects/vanguard-runner/packages/engine
+cd /Users/jan/PycharmProjects/aegis-runner/packages/engine
 python examples/verify_baidu_test_setup.py
 ```
 

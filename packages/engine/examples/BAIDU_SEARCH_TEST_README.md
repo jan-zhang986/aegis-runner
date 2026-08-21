@@ -41,7 +41,7 @@ playwright install chromium
 
 ```bash
 # 进入项目根目录
-cd /Users/jan/PycharmProjects/vanguard-runner/packages/engine
+cd /Users/jan/PycharmProjects/aegis-runner/packages/engine
 
 # 运行测试脚本
 python examples/run_baidu_search_test.py
@@ -191,7 +191,7 @@ print(f"测试状态: {result.status}")
 ======================================================================
 
 ✅ 已加载workflow配置
-📁 配置文件: /Users/jan/PycharmProjects/spotter-runner/packages/engine/examples/baidu_search_test.json
+📁 配置文件: /Users/jan/PycharmProjects/aegis-runner/packages/engine/examples/baidu_search_test.json
 📊 节点数量: 8
 
 🚀 开始执行测试...

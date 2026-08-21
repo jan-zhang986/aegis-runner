@@ -1,4 +1,4 @@
-# Spotter Runner Functional Gap Analysis
+# Aegis Runner Functional Gap Analysis
 
 本文档描述仓库当前“已可用功能”、“未完成功能”和建议优先级。
 

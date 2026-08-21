@@ -179,7 +179,7 @@ class HttpConfig(BaseConfig):
     """
     HTTP请求配置
     
-    参考 vanguard-runner 的设计，支持完整的 HTTP 参数类型
+    参考 aegis-runner 的设计，支持完整的 HTTP 参数类型
     """
     # ========== 基础字段 ==========
     method: str = "GET"  # HTTP 方法: GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS

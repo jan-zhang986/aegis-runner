@@ -43,7 +43,7 @@ class OssClient:
     阿里云 OSS 客户端
     
     封装 OSS 上传、下载、删除操作
-    参考 vanguard-runner 的 AiliBabaOss 类实现
+    参考 aegis-runner 的 AiliBabaOss 类实现
     
     使用示例:
         client = OssClient(

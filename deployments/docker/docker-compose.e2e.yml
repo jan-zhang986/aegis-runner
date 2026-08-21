@@ -1,7 +1,7 @@
 services:
   mysql:
     image: mysql:8.0
-    container_name: vanguard-runner-e2e-mysql
+    container_name: aegis-runner-e2e-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: spotter_runner_e2e
@@ -17,7 +17,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: vanguard-runner-e2e-redis
+    container_name: aegis-runner-e2e-redis
     ports:
       - "16379:6379"
     healthcheck:
@@ -28,7 +28,7 @@ services:
 
   kafka:
     image: bitnami/kafka:3.7
-    container_name: vanguard-runner-e2e-kafka
+    container_name: aegis-runner-e2e-kafka
     environment:
       KAFKA_CFG_NODE_ID: 0
       KAFKA_CFG_PROCESS_ROLES: controller,broker
@@ -52,7 +52,7 @@ services:
     build:
       context: ../..
       dockerfile: deployments/docker/Dockerfile.master
-    container_name: vanguard-runner-e2e-master
+    container_name: aegis-runner-e2e-master
     depends_on:
       mysql:
         condition: service_healthy
@@ -80,7 +80,7 @@ services:
     build:
       context: ../..
       dockerfile: deployments/docker/Dockerfile.worker
-    container_name: vanguard-runner-e2e-worker
+    container_name: aegis-runner-e2e-worker
     depends_on:
       mysql:
         condition: service_healthy

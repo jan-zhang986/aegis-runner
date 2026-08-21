@@ -15,7 +15,7 @@ def test_health_check_returns_ok_payload():
     async def _run():
         response = await health_check()
         assert response["status"] == "ok"
-        assert response["service"] == "vanguard-runner"
+        assert response["service"] == "aegis-runner"
 
     asyncio.run(_run())
 

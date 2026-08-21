@@ -1,8 +1,8 @@
 # Workflow Engine
 
-自动化测试工作流引擎：通过 JSON（`nodes` / `edges`）或 Python 构建流程，在 **Spotter Runner Worker** 中由 `workflow_engine.WorkflowExecutor` 执行。
+自动化测试工作流引擎：通过 JSON（`nodes` / `edges`）或 Python 构建流程，在 **Aegis Runner Worker** 中由 `workflow_engine.WorkflowExecutor` 执行。
 
-## 与 spotter-runner 的关系
+## 与 aegis-runner 的关系
 
 - Worker：`apps/worker/executors/workflow_executor.py` 将 `packages/engine` 加入 `sys.path` 并调用 `workflow_engine.WorkflowExecutor`。
 - 依赖：除项目根目录 `requirements.txt` 外，引擎额外依赖见同目录 [`requirements.txt`](requirements.txt)。

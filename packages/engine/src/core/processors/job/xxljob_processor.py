@@ -12,7 +12,7 @@
 3. 支持多租户
 4. 自动登录和认证
 
-参考 vanguard-runner 的 JobCenter 实现
+参考 aegis-runner 的 JobCenter 实现
 使用独立的 XxlJobClient 封装 XXL-Job 操作
 """
 

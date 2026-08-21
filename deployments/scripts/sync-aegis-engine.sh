@@ -68,7 +68,7 @@ echo ""
 echo -e "${YELLOW}[4/4] 更新代码...${NC}"
 mv "$TEMP_CLONE_DIR" "$AEGIS_ENGINE_DIR"
 
-# 恢复 .gitignore（如果需要保留 vanguard-runner 特定的配置）
+# 恢复 .gitignore（如果需要保留 aegis-runner 特定的配置）
 if [ -f "$BACKUP_DIR/.gitignore.backup" ]; then
     cp "$BACKUP_DIR/.gitignore.backup" "$AEGIS_ENGINE_DIR/.gitignore"
     echo -e "${GREEN}✓ 已恢复 .gitignore${NC}"

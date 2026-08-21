@@ -224,7 +224,7 @@ class WorkflowCallbackService:
         # 请求头
         headers = {
             "Content-Type": "application/json",
-            "User-Agent": "Spotter-Runner/1.0",
+            "User-Agent": "Aegis-Runner/1.0",
             "X-Callback-Timestamp": datetime.now().isoformat()
         }
         if custom_headers:

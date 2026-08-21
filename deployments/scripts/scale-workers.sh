@@ -10,7 +10,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 K8S_NAMESPACE="default"
-DEPLOYMENT_NAME="spotter-runner-worker"
+DEPLOYMENT_NAME="aegis-runner-worker"
 
 if [ "$1" == "" ]; then
     echo -e "${RED}错误: 请指定 Worker 数量${NC}"

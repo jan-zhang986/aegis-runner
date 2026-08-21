@@ -460,7 +460,7 @@ print(workflow_data)
 
 executor = WorkflowExecutor(
     workflow_data,
-    hook_file="/Users/jan/PycharmProjects/vanguard-runner/hooks.py",
+    hook_file="/Users/jan/PycharmProjects/aegis-runner/hooks.py",
 )
 result = executor.execute()
 print(result.to_dict())

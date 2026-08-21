@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Spotter Runner 部署脚本
+# Aegis Runner 部署脚本
 # 用于手动部署到 K8s 集群
 
 set -e
@@ -22,7 +22,7 @@ K8S_NAMESPACE="default"
 VERSION=$(git rev-parse --short HEAD)
 
 echo -e "${GREEN}========================================${NC}"
-echo -e "${GREEN}Spotter Runner 部署脚本${NC}"
+echo -e "${GREEN}Aegis Runner 部署脚本${NC}"
 echo -e "${GREEN}========================================${NC}"
 echo ""
 
@@ -102,8 +102,8 @@ echo ""
 # 4. 更新镜像
 echo -e "${GREEN}[4/5] 更新镜像版本...${NC}"
 
-kubectl set image deployment/vanguard-runner-master master=$DOCKER_REGISTRY/$DOCKER_NAMESPACE/$MASTER_IMAGE:$VERSION -n $K8S_NAMESPACE
-kubectl set image deployment/vanguard-runner-worker worker=$DOCKER_REGISTRY/$DOCKER_NAMESPACE/$WORKER_IMAGE:$VERSION -n $K8S_NAMESPACE
+kubectl set image deployment/aegis-runner-master master=$DOCKER_REGISTRY/$DOCKER_NAMESPACE/$MASTER_IMAGE:$VERSION -n $K8S_NAMESPACE
+kubectl set image deployment/aegis-runner-worker worker=$DOCKER_REGISTRY/$DOCKER_NAMESPACE/$WORKER_IMAGE:$VERSION -n $K8S_NAMESPACE
 
 echo -e "${GREEN}✓ 镜像版本更新完成${NC}"
 echo ""
@@ -112,10 +112,10 @@ echo ""
 echo -e "${GREEN}[5/5] 等待部署完成...${NC}"
 
 echo "等待 Master 部署完成..."
-kubectl rollout status deployment/vanguard-runner-master -n $K8S_NAMESPACE
+kubectl rollout status deployment/aegis-runner-master -n $K8S_NAMESPACE
 
 echo "等待 Worker 部署完成..."
-kubectl rollout status deployment/vanguard-runner-worker -n $K8S_NAMESPACE
+kubectl rollout status deployment/aegis-runner-worker -n $K8S_NAMESPACE
 
 echo -e "${GREEN}✓ 部署完成${NC}"
 echo ""
@@ -135,7 +135,7 @@ kubectl get pods -l component=worker -n $K8S_NAMESPACE
 
 echo ""
 echo "Services:"
-kubectl get svc -l app=vanguard-runner -n $K8S_NAMESPACE
+kubectl get svc -l app=aegis-runner -n $K8S_NAMESPACE
 
 echo ""
 echo -e "${GREEN}========================================${NC}"

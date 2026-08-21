@@ -53,7 +53,7 @@
 ### 方式1: 直接运行Python脚本
 
 ```bash
-cd /Users/jan/PycharmProjects/vanguard-runner/packages/engine
+cd /Users/jan/PycharmProjects/aegis-runner/packages/engine
 python examples/run_baidu_taobao_search.py
 ```
 

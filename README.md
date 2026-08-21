@@ -1,6 +1,6 @@
-## Spotter-Runner
+## Aegis-Runner
 
-> 基于 HttpRunner 的自动化测试平台，采用 Master-Worker 分布式架构，支持大规模并发测试任务执行。
+> 基于自研工作流引擎的分布式自动化测试平台，采用 Master-Worker 分布式架构，支持大规模并发测试任务执行。
 
 ### 🎯 当前核心特性
 
@@ -18,7 +18,6 @@
 > 安装依赖 pip install -r requirements.txt
 > 导出依赖 pipreqs ./ --encoding=utf8 --force
 * python 3.8
-* httprunner v4.3
 * fastapi
 * mysql
 
@@ -55,7 +54,7 @@
 
 ### 后端技术栈
 - **Web 框架**: FastAPI
-- **测试引擎**: HttpRunner v4.3
+- **测试引擎**: 自研 Workflow Engine (`packages/engine`)
 - **ORM**: SQLAlchemy 2.0
 - **数据库**: MySQL 8.0
 - **缓存**: Redis 6.0
@@ -187,4 +186,4 @@ kafka-topics.sh --create --topic task-workflow-normal --bootstrap-server localho
 
 # 验证
 kafka-topics.sh --list --bootstrap-server localhost:9092
-# vanguard-runner
+# aegis-runner

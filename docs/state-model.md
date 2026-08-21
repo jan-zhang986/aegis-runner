@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Spotter Runner keeps task state in two places on purpose:
+Aegis Runner keeps task state in two places on purpose:
 
 - `Redis`: realtime execution state for running tasks and workers
 - `MySQL`: durable execution record and query fallback

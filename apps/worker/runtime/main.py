@@ -751,7 +751,7 @@ async def main():
 
     CYAN, BLUE, GREEN, YELLOW, RESET = "\033[36m", "\033[34m", "\033[32m", "\033[33m", "\033[0m"
     banner = f"""
-{CYAN}    Spotter Runner {YELLOW}Worker{GREEN} (workflow-only){RESET}
+{CYAN}    Aegis Runner {YELLOW}Worker{GREEN} (workflow-only){RESET}
 """
     print(banner)
 

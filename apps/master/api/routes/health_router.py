@@ -57,7 +57,7 @@ async def health_check():
         return {
             "status": "ok",
             "timestamp": datetime.utcnow().isoformat(),
-            "service": "vanguard-runner"
+            "service": "aegis-runner"
         }
     except Exception as e:
         LOGGER.logger.error(f"Health check failed: {e}")

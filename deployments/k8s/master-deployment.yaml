@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vanguard-runner-master
+  name: aegis-runner-master
   namespace: default
   labels:
-    app: vanguard-runner
+    app: aegis-runner
     component: master
 spec:
   replicas: 2  # Master 可以部署多个实例（API 无状态）
   selector:
     matchLabels:
-      app: vanguard-runner
+      app: aegis-runner
       component: master
   template:
     metadata:
       labels:
-        app: vanguard-runner
+        app: aegis-runner
         component: master
     spec:
       containers:
@@ -37,7 +37,7 @@ spec:
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: vanguard-runner-secrets
+              name: aegis-runner-secrets
               key: db-password
         - name: DB_NAME
           value: "spotter_runner"
@@ -52,7 +52,7 @@ spec:
         - name: REDIS_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: vanguard-runner-secrets
+              name: aegis-runner-secrets
               key: redis-password
               optional: true
         
