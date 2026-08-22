@@ -1,12 +1,12 @@
 # Aegis Runner Architecture (Cloud-Native Clean Architecture)
 
-仓库已升级重构为现代工业级 5 层 Clean Architecture 结构 (`src/aegis_runner/`)：
+仓库已升级重构为现代工业级 5 层 Clean Architecture 结构 (`aegis_runner/`)：
 
-- `src/aegis_runner/core`: 基础服务（配置加载 `config.py`、日志 `logging.py`、异常基类）
-- `src/aegis_runner/domain`: 领域实体模型与传输契约（Models & Schemas，框架无关）
-- `src/aegis_runner/engine`: 核心工作流执行引擎与 Step Handlers (HTTP / SQL / Script / Playwright)
-- `src/aegis_runner/infrastructure`: 外部中间件实现 (Kafka Event Producer/Consumer, Redis Lock, MySQL DB, Callback)
-- `src/aegis_runner/worker`: 云原生无状态 Worker 进程入口
+- `aegis_runner/core`: 基础服务（配置加载 `config.py`、日志 `logging.py`、异常基类）
+- `aegis_runner/domain`: 领域实体模型与传输契约（Models & Schemas，框架无关）
+- `aegis_runner/engine`: 核心工作流执行引擎与 Step Handlers (HTTP / SQL / Script / Playwright)
+- `aegis_runner/infrastructure`: 外部中间件实现 (Kafka Event Producer/Consumer, Redis Lock, MySQL DB, Callback)
+- `aegis_runner/worker`: 云原生无状态 Worker 进程入口
 
 标准运行入口：
 
