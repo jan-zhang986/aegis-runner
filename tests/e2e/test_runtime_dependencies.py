@@ -6,9 +6,9 @@ import pytest
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from aegis_runner.infrastructure.kafka import TaskProducer
-from aegis_runner.core.infrastructure.redis_client import RedisClient
-from aegis_runner.core.config import (
+from src.infrastructure.kafka import TaskProducer
+from src.core.infrastructure.redis_client import RedisClient
+from src.core.config import (
     get_db_pool_settings,
     get_kafka_bootstrap_servers,
     get_primary_db_url,

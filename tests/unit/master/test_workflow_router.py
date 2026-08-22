@@ -12,7 +12,7 @@ from apps.master.api.routes.workflow_router import (
     retry_batch_workflow,
     get_workflow_status,
 )
-from aegis_runner.domain.models import WorkflowDebugExecuteRequest
+from src.domain.models import WorkflowDebugExecuteRequest
 
 
 class _Request:

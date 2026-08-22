@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """engine: packages.engine.src.core.processors.render_utils"""
 
-from aegis_runner.engine.core.processors.render_utils import get_config_value, render_recursive
+from src.engine.core.processors.render_utils import get_config_value, render_recursive
 
 
 class _Ctx:
