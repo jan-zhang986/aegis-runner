@@ -18,7 +18,7 @@ TOPICS = (
 def _get_database_url() -> str:
     return os.getenv(
         "DB_PRIMARY_URL",
-        "mysql+asyncmy://root:root@127.0.0.1:13306/spotter_runner_e2e?charset=utf8mb4",
+        "mysql+asyncmy://root:root@127.0.0.1:13306/aegis_runner_e2e?charset=utf8mb4",
     )
 
 

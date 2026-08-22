@@ -118,14 +118,14 @@ def build_demo_workflow():
                 "type": "mysql",
                 "data": {
                     "config": {
-                        "sql": "SELECT * FROM spotter_runner.user WHERE name like '%Y%' ",
+                        "sql": "SELECT * FROM aegis_runner.user WHERE name like '%Y%' ",
                         "operation": "select",
                         "connection": {
                             "host": "mysql.tst.spotter.ink",
                             "port": 31070,
                             "user": "root",
                             "password": "root",
-                            "database": "spotter_runner"
+                            "database": "aegis_runner"
                         }
                     },
                     "assertion": {

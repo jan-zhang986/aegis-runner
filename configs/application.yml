@@ -5,7 +5,7 @@ server:
 database:
   datasource:
     host: mysql.tst.spotter.ink
-    name: spotter_runner
+    name: aegis_runner
     username: root
     password: root
     port: 31070

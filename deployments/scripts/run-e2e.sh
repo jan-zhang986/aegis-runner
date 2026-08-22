@@ -15,7 +15,7 @@ cd "$ROOT_DIR"
 docker compose -f "$COMPOSE_FILE" up -d --build mysql redis kafka
 docker compose -f "$COMPOSE_FILE" up -d --wait mysql redis kafka
 
-DB_PRIMARY_URL="mysql+asyncmy://root:root@127.0.0.1:13306/spotter_runner_e2e?charset=utf8mb4" \
+DB_PRIMARY_URL="mysql+asyncmy://root:root@127.0.0.1:13306/aegis_runner_e2e?charset=utf8mb4" \
 KAFKA_BOOTSTRAP_SERVERS="127.0.0.1:19092" \
 .venv/bin/python deployments/scripts/init-e2e-environment.py
 
@@ -28,7 +28,7 @@ MYSQL_E2E_HOST="127.0.0.1" \
 MYSQL_E2E_PORT="13306" \
 MYSQL_E2E_USER="root" \
 MYSQL_E2E_PASSWORD="root" \
-MYSQL_E2E_DATABASE="spotter_runner_e2e" \
+MYSQL_E2E_DATABASE="aegis_runner_e2e" \
 REDIS_E2E_HOST="127.0.0.1" \
 REDIS_E2E_PORT="16379" \
 .venv/bin/python -m pytest tests/e2e/test_workflow_e2e.py tests/e2e/test_lifecycle_e2e.py

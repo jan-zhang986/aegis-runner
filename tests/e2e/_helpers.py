@@ -36,7 +36,7 @@ def mysql_url() -> str:
         f"{os.getenv('MYSQL_E2E_PASSWORD', 'root')}@"
         f"{os.getenv('MYSQL_E2E_HOST', '127.0.0.1')}:"
         f"{os.getenv('MYSQL_E2E_PORT', '13306')}/"
-        f"{os.getenv('MYSQL_E2E_DATABASE', 'spotter_runner_e2e')}?charset=utf8mb4"
+        f"{os.getenv('MYSQL_E2E_DATABASE', 'aegis_runner_e2e')}?charset=utf8mb4"
     )
 
 

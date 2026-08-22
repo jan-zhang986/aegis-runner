@@ -19,12 +19,12 @@ def test_get_primary_db_url_uses_environment_override():
         "DB_PORT": "3307",
         "DB_USER": "tester",
         "DB_PASSWORD": "secret",
-        "DB_NAME": "spotter_runner_test",
+        "DB_NAME": "aegis_runner_test",
     }
     with patch.dict("os.environ", env, clear=True):
         url = runtime.get_primary_db_url()
 
-    assert url == "mysql+asyncmy://tester:secret@db.example.com:3307/spotter_runner_test?charset=utf8mb4"
+    assert url == "mysql+asyncmy://tester:secret@db.example.com:3307/aegis_runner_test?charset=utf8mb4"
 
 
 def test_get_kafka_bootstrap_servers_raises_when_missing():

@@ -4,7 +4,7 @@ services:
     container_name: aegis-runner-e2e-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: spotter_runner_e2e
+      MYSQL_DATABASE: aegis_runner_e2e
     command:
       - --default-authentication-plugin=mysql_native_password
     ports:
@@ -65,7 +65,7 @@ services:
       DB_PORT: "3306"
       DB_USER: root
       DB_PASSWORD: root
-      DB_NAME: spotter_runner_e2e
+      DB_NAME: aegis_runner_e2e
       REDIS_HOST: redis
       REDIS_PORT: "6379"
       KAFKA_BOOTSTRAP_SERVERS: kafka:9092
@@ -93,7 +93,7 @@ services:
       DB_PORT: "3306"
       DB_USER: root
       DB_PASSWORD: root
-      DB_NAME: spotter_runner_e2e
+      DB_NAME: aegis_runner_e2e
       REDIS_HOST: redis
       REDIS_PORT: "6379"
       KAFKA_BOOTSTRAP_SERVERS: kafka:9092

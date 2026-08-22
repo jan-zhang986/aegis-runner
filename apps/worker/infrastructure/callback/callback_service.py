@@ -195,8 +195,24 @@ class WorkflowCallbackService:
             payload = cls._truncate_payload_if_needed(payload)
             key = (callback_model.report_id or callback_model.run_id or "").strip() or None
             return await producer.send_workflow_result(topic, key, payload)
+    @classmethod
+    async def notify_step_event(cls, run_id: str, step_id: str, status: str, description: str = "", duration_ms: int = 0) -> bool:
+        """发送单节点步骤状态变更事件到 Kafka (workflow-step-event)"""
+        try:
+            from packages.shared.infrastructure.kafka_producer import get_kafka_producer
+            producer = await get_kafka_producer()
+            topic = "workflow-step-event"
+            payload = {
+                "runId": run_id,
+                "stepId": step_id,
+                "status": status,  # pending / running / success / failed
+                "description": description,
+                "duration": duration_ms,
+                "timestamp": int(datetime.now().timestamp() * 1000)
+            }
+            return await producer.send_step_event(topic, run_id, payload)
         except Exception as e:
-            LOGGER.logger.error(f"发送工作流结果到 Kafka 失败: runId={getattr(callback_model, 'run_id', '')}, error={e}", exc_info=True)
+            LOGGER.logger.error(f"发送步骤事件到 Kafka 失败: runId={run_id}, stepId={step_id}, error={e}")
             return False
 
     @classmethod

@@ -1,7 +1,9 @@
-import asyncio
-
-from apps.worker.main import main
-
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Thin Wrapper Entrance: Start Aegis Runner Stateless Worker
+"""
+from aegis_runner.worker.main import run_worker
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    run_worker()

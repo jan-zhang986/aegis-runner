@@ -36,7 +36,7 @@ spec:
               name: aegis-runner-secrets
               key: db-password
         - name: DB_NAME
-          value: "spotter_runner"
+          value: "aegis_runner"
         
         # Redis 配置
         - name: REDIS_HOST

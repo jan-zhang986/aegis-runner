@@ -5,7 +5,7 @@ database:
     # 连接，注意各个配置，尤其是要一次性执行多条 SQL 时，要 allowMultiQueries=true
     host: mysql.tst.spotter.ink
     # 用户名 root
-    name: spotter_runner
+    name: aegis_runner
     username: root
 
     # 密码 mysql
