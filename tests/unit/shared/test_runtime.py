@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 import pytest
 
-from packages.shared.settings import runtime
+from aegis_runner.core.settings import runtime
 
 
 def test_get_primary_db_url_raises_when_config_missing():

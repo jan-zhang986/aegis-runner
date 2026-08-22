@@ -7,7 +7,7 @@ from fastapi import BackgroundTasks
 
 from apps.master.api.routes.workflow_router import batch_execute_workflow, get_batch_workflow_status
 from apps.master.application.use_cases.task_splitter import Task
-from packages.contracts.workflow_models import BatchWorkflowExecuteRequest
+from aegis_runner.domain.models import BatchWorkflowExecuteRequest
 
 
 class _Request:

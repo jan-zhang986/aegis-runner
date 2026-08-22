@@ -2,7 +2,7 @@
 import sys
 from pathlib import Path
 
-from packages.engine.workflow_engine import WorkflowExecutor
+from aegis_runner.engine.workflow_engine import WorkflowExecutor
 
 
 def test_hook_loading_restores_sys_path_and_registers_functions(tmp_path):

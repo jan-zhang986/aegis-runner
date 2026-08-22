@@ -27,7 +27,7 @@ def _get_kafka_bootstrap_servers() -> str:
 
 
 async def _init_schema() -> None:
-    from apps.master.infrastructure.db.database_async import AsyncBase
+    from aegis_runner.infrastructure.db.database_async import AsyncBase
     from apps.master.domain.models.task_execution import TaskExecution  # noqa: F401
 
     engine = create_async_engine(_get_database_url(), pool_pre_ping=True)

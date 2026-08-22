@@ -8,7 +8,7 @@ import asyncio
 import signal
 import sys
 
-from apps.worker.runtime.main import main, signal_handler
+from aegis_runner.worker.main import main, signal_handler
 
 
 def run_worker():

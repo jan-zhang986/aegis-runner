@@ -15,8 +15,8 @@ _FIXTURE_PKG_ROOT = _ROOT / "tests" / "fixtures"
 if str(_FIXTURE_PKG_ROOT) not in sys.path:
     sys.path.insert(0, str(_FIXTURE_PKG_ROOT))
 
-from packages.engine.src.core.processor_discovery_paths import DEFAULT_PROCESSOR_DISCOVERY_PACKAGES
-from packages.engine.src.core.processor_package_discovery import (
+from aegis_runner.engine.core.processor_discovery_paths import DEFAULT_PROCESSOR_DISCOVERY_PACKAGES
+from aegis_runner.engine.core.processor_package_discovery import (
     for_each_direct_submodule,
     preload_processor_packages,
 )
