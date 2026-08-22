@@ -686,7 +686,7 @@ async def execute_task_async(task_data, handler_id, parent_task_id, _author):
     try:
         LOGGER.logger.info(f"执行工作流任务: task_id={task_id}")
 
-        from src.worker.executors.workflow_executor import WorkflowExecutor
+        from src.runner.executors.workflow_executor import WorkflowExecutor
         from src.infrastructure.callback.callback_service import WorkflowCallbackService, send_single_workflow_callback
 
         result = await WorkflowExecutor.execute_workflow(payload, task_data)

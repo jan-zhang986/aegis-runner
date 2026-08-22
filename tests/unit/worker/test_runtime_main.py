@@ -3,7 +3,7 @@ import asyncio
 from datetime import datetime
 from unittest.mock import AsyncMock, patch
 
-from src.worker.runtime import main as worker_runtime
+from src.runner.runtime import main as worker_runtime
 
 
 def test_update_task_status_in_db_passes_extended_fields():

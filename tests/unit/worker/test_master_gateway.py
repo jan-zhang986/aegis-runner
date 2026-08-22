@@ -3,7 +3,7 @@ import asyncio
 from datetime import datetime
 from unittest.mock import AsyncMock, patch
 
-from src.worker.infrastructure.redis import master_gateway
+from src.runner.infrastructure.redis import master_gateway
 
 
 def test_persist_task_status_commits_on_success():

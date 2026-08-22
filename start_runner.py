@@ -3,7 +3,7 @@
 """
 Thin Wrapper Entrance: Start Aegis Runner Stateless Worker
 """
-from src.worker.main import run_worker
+from src.runner.main import run_worker
 
 if __name__ == "__main__":
     run_worker()
