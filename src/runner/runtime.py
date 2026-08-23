@@ -226,7 +226,10 @@ async def recover_stale_running_tasks():
         try:
             started_before = datetime.now() - timedelta(seconds=TASK_RECOVERY_MIN_AGE_SECONDS)
             active_workers = await redis_client.get_all_workers()
-            active_worker_ids = set(active_workers.keys())
+            if isinstance(active_workers, dict):
+                active_worker_ids = set(active_workers.keys())
+            else:
+                active_worker_ids = set(active_workers)
             recoverable_tasks = await query_recoverable_tasks(started_before=started_before)
             recovered_count = 0
 
