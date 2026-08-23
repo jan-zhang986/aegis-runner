@@ -15,7 +15,10 @@ import time
 from datetime import datetime
 from datetime import timedelta
 
-import psutil
+try:
+    import psutil
+except ImportError:
+    psutil = None
 from aiohttp import web
 from aiokafka import AIOKafkaConsumer
 
@@ -68,8 +71,8 @@ def signal_handler(sig, frame):
 async def health_check_handler(request):
     global worker_id, running, start_time
     try:
-        cpu_usage = psutil.cpu_percent(interval=0)
-        memory = psutil.virtual_memory()
+        cpu_usage = psutil.cpu_percent(interval=0) if psutil else 0.0
+        mem_percent = psutil.virtual_memory().percent if psutil else 0.0
         uptime_seconds = 0
         if start_time:
             uptime_seconds = int((datetime.now() - start_time).total_seconds())
@@ -79,7 +82,7 @@ async def health_check_handler(request):
                 "worker_id": worker_id or "unknown",
                 "running": running,
                 "cpu_usage": f"{cpu_usage}%",
-                "memory_usage": f"{memory.percent}%",
+                "memory_usage": f"{mem_percent}%",
                 "uptime_seconds": uptime_seconds,
                 "timestamp": datetime.now().isoformat(),
             }
@@ -175,8 +178,8 @@ async def register_worker():
     timestamp = int(time.time())
     worker_id = f"worker-{hostname}-{timestamp}"
     redis_client = await get_worker_redis_client()
-    cpu_count = psutil.cpu_count()
-    memory = psutil.virtual_memory()
+    cpu_count = psutil.cpu_count() if psutil else os.cpu_count() or 1
+    mem_percent = psutil.virtual_memory().percent if psutil else 0.0
     worker_key = f"worker:{worker_id}"
     worker_info = {
         "worker_id": worker_id,
@@ -184,7 +187,7 @@ async def register_worker():
         "current_tasks": "0",
         "max_tasks": str(max_concurrent_tasks),
         "cpu_usage": "0.0",
-        "memory_usage": str(memory.percent),
+        "memory_usage": str(mem_percent),
         "ip": socket.gethostbyname(hostname),
         "hostname": hostname,
         "cpu_count": str(cpu_count),
@@ -202,8 +205,8 @@ async def send_heartbeat():
     global worker_id, redis_client, running
     while running:
         try:
-            cpu_usage = psutil.cpu_percent(interval=0.1)
-            memory_usage = psutil.virtual_memory().percent
+            cpu_usage = psutil.cpu_percent(interval=0.1) if psutil else 0.0
+            memory_usage = psutil.virtual_memory().percent if psutil else 0.0
             worker_key = f"worker:{worker_id}"
             await redis_client.client.hset(worker_key, "last_heartbeat", str(int(time.time())))
             await redis_client.client.hset(worker_key, "cpu_usage", str(cpu_usage))
