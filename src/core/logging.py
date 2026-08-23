@@ -54,3 +54,7 @@ class Logger(object):
 
 
 LOGGER = Logger("aegis-runner")
+
+
+def add_endpoint_logger(endpoint_name: str) -> Logger:
+    return Logger(f"endpoint-{endpoint_name}")
