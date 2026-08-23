@@ -32,6 +32,20 @@ class RedisClient:
             await self.client.close()
             self.client = None
 
+    async def get_all_workers(self):
+        if not self.client:
+            return []
+        try:
+            keys = await self.client.keys("worker:*")
+            return [k.split("worker:")[-1] for k in keys if isinstance(k, str)]
+        except Exception:
+            return []
+
+    def __getattr__(self, name):
+        if self.client and hasattr(self.client, name):
+            return getattr(self.client, name)
+        raise AttributeError(f"'RedisClient' object has no attribute '{name}'")
+
 
 async def get_redis_client() -> RedisClient:
     global _redis_client_instance
