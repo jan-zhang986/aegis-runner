@@ -283,18 +283,14 @@ async def consume_tasks():
         fetch_max_wait_ms=500,
     )
 
-    max_retries = 3
-    retry_count = 0
-    while retry_count < max_retries:
+    kafka_connected = False
+    while running and not kafka_connected:
         try:
             await consumer.start()
-            LOGGER.logger.info(f"Kafka consumer started (attempt {retry_count + 1})")
-            break
+            LOGGER.logger.info("Kafka 消费者连接成功")
+            kafka_connected = True
         except Exception as e:
-            retry_count += 1
-            LOGGER.logger.error(f"Kafka connection failed ({retry_count}/{max_retries}): {e}")
-            if retry_count >= max_retries:
-                raise
+            LOGGER.logger.warning(f"Kafka 未连通 ({e})，等待 10s 重试以保证执行机挂载监控服务...")
             await asyncio.sleep(10)
 
     running_tasks = set()
