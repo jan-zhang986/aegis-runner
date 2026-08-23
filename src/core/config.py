@@ -81,11 +81,11 @@ def get_primary_db_url() -> str:
         return f"mysql+asyncmy://{username}:{password}@{host}:{port}/{db_name}?charset=utf8mb4"
 
     db_info = get_database_config()
-    host = _require_setting(db_info.get("host"), "database.datasource.host")
-    port = int(_require_setting(db_info.get("port"), "database.datasource.port"))
-    username = _require_setting(db_info.get("username"), "database.datasource.username")
-    password = db_info.get("password", "")
-    db_name = _require_setting(db_info.get("name"), "database.datasource.name")
+    host = db_info.get("host") or "127.0.0.1"
+    port = int(db_info.get("port") or 3306)
+    username = db_info.get("username") or "root"
+    password = db_info.get("password") or ""
+    db_name = db_info.get("name") or "aegis_runner"
     return f"mysql+asyncmy://{username}:{password}@{host}:{port}/{db_name}?charset=utf8mb4"
 
 
@@ -115,23 +115,15 @@ def get_kafka_bootstrap_servers() -> str:
     config = load_application_config()
     kafka_config = config.get("kafka", {}) if isinstance(config, dict) else {}
     value = kafka_config.get("bootstrap_servers") or kafka_config.get("bootstrap-servers")
-    return _require_setting(value, "KAFKA_BOOTSTRAP_SERVERS or kafka.bootstrap_servers")
+    return value or "127.0.0.1:9092"
 
 
 def get_redis_settings() -> Dict[str, Any]:
     config = load_application_config()
     redis_config = config.get("redis", {}) if isinstance(config, dict) else {}
     return {
-        "host": _require_setting(
-            os.getenv("REDIS_HOST") or redis_config.get("host"),
-            "REDIS_HOST or redis.host",
-        ),
-        "port": int(
-            _require_setting(
-                os.getenv("REDIS_PORT") or redis_config.get("port"),
-                "REDIS_PORT or redis.port",
-            )
-        ),
+        "host": os.getenv("REDIS_HOST") or redis_config.get("host") or "127.0.0.1",
+        "port": int(os.getenv("REDIS_PORT") or redis_config.get("port") or 6379),
         "db": int(os.getenv("REDIS_DB") or redis_config.get("db") or 0),
-        "password": os.getenv("REDIS_PASSWORD") or None,
+        "password": os.getenv("REDIS_PASSWORD") or redis_config.get("password") or None,
     }
