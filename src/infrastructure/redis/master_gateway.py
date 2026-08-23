@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.core.infrastructure.redis_client import get_redis_client
+from src.infrastructure.redis.redis_client import get_redis_client
 from src.core.logging import LOGGER, add_endpoint_logger
 from src.infrastructure.db.task_status_store import (
     get_db_write,
