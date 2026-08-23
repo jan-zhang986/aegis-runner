@@ -6,7 +6,7 @@
 2. While 循环 (while_loop) - 按条件执行
 3. ForEach 循环 (foreach_loop) - 遍历集合执行
 
-参考 MeterSphere 循环控制器设计
+参考循环控制器设计
 """
 
 import json
