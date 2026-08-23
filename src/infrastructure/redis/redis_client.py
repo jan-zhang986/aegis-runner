@@ -4,7 +4,7 @@
 Aegis Runner Async Redis Client Infrastructure
 """
 import redis.asyncio as aioredis
-from src.core.config import RUNTIME_SETTINGS
+from src.core.config import get_redis_settings
 
 _redis_client_instance = None
 
@@ -36,11 +36,11 @@ class RedisClient:
 async def get_redis_client() -> RedisClient:
     global _redis_client_instance
     if not _redis_client_instance:
-        cfg = RUNTIME_SETTINGS.get_redis_config()
+        cfg = get_redis_settings()
         _redis_client_instance = RedisClient(
             host=cfg.get("host", "127.0.0.1"),
             port=int(cfg.get("port", 6379)),
-            password=cfg.get("password", ""),
+            password=cfg.get("password") or None,
             db=int(cfg.get("db", 0)),
         )
         await _redis_client_instance.connect()
