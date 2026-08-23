@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from datetime import datetime
 
 from src.infrastructure.redis.redis_client import get_redis_client
