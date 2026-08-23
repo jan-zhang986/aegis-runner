@@ -8,7 +8,7 @@ import asyncio
 import signal
 import sys
 
-from src.runner.main import main, signal_handler
+from src.runner.runtime import main, signal_handler
 
 
 def run_worker():
