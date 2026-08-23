@@ -36,8 +36,8 @@ class RedisClient:
         if not self.client:
             return []
         try:
-            keys = await self.client.keys("worker:*")
-            return [k.split("worker:")[-1] for k in keys if isinstance(k, str)]
+            worker_keys = await self.client.keys("worker:*")
+            return [k.split("worker:")[-1] for k in worker_keys if isinstance(k, str)]
         except Exception:
             return []
 
