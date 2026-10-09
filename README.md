@@ -4,6 +4,10 @@ Aegis 自动化测试平台的云原生无状态工作流执行引擎。彻底�
 
 与前端仓库 [`aegis-next-web`](https://github.com/jan-zhang986/aegis-next-web) 及核心后端 [`aegis-next-server`](https://github.com/jan-zhang986/vanguard-testops) 完全打通。
 
+> 💡 **品牌演进与未来规划提示（TrueOne）**：  
+> 经架构团队复盘决策，本项目终局全球品牌确立为 **`TrueOne`**（终端极客别名：`t1` / `tone`，寓意“布尔真理之 1，万测归一底座”）。  
+> **为保证研发连续性，当前本地工程目录、Git 远程仓库及代码 import 路径保持现状不变**，未来将在开源与海外推介版本中完成平滑别名升级。
+
 ---
 
 ## 🏛️ 云原生全无状态架构 (Masterless Architecture)

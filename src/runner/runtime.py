@@ -688,15 +688,41 @@ async def execute_task_async(task_data, handler_id, parent_task_id, _author):
     try:
         LOGGER.logger.info(f"执行工作流任务: task_id={task_id}")
 
-        from src.runner.executors.workflow_executor import WorkflowExecutor
-        from src.infrastructure.callback.callback_service import WorkflowCallbackService, send_single_workflow_callback
-
-        result = await WorkflowExecutor.execute_workflow(payload, task_data)
+        task_type = task_data.get("task_type") or payload.get("taskType") or payload.get("runnerType")
+        if task_type in ("CODE", "pytest", "maven", "go", "playwright", "shell"):
+            LOGGER.logger.info(f"执行原生代码测试任务 (CodeRunner): task_id={task_id}, type={task_type}")
+            from src.runner.code_runner import CodeRunner, CodeTask
+            runner = CodeRunner()
+            code_task = CodeTask(
+                task_id=task_id,
+                run_id=payload.get("runId") or task_id,
+                runner_type=payload.get("runnerType", "pytest"),
+                git_repo=payload.get("gitRepo"),
+                git_branch=payload.get("gitBranch", "main"),
+                test_target=payload.get("testTarget") or payload.get("testFilePath", ""),
+                work_dir=payload.get("workDir"),
+                base_branch=payload.get("baseBranch", "origin/main"),
+                coverage_enabled=payload.get("coverageEnabled", True),
+                coverage_threshold=float(payload.get("coverageThreshold", 80.0)),
+                env=payload.get("env", {}),
+            )
+            code_result = await runner.execute(code_task)
+            result = {
+                "success": code_result.get("status") == "PASSED",
+                "status": code_result.get("status"),
+                "result": code_result,
+                "message": code_result.get("error") or "Code execution finished",
+            }
+        else:
+            result = await WorkflowExecutor.execute_workflow(payload, task_data)
 
         if result is None:
-            return {"success": False, "error": "_execute_workflow returned None"}
+            return {"success": False, "error": "Execution returned None"}
 
+
+        from src.infrastructure.callback.callback_service import WorkflowCallbackService, send_single_workflow_callback
         if WorkflowCallbackService.is_enabled():
+
             try:
                 run_id = payload.get("runId") or (result.get("result") or {}).get("runId", task_id)
                 report_id = payload.get("reportId", "")

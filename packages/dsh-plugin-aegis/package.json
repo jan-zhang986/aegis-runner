@@ -1,0 +1,22 @@
+{
+  "name": "@vanguard/dsh-plugin-aegis",
+  "version": "1.1.0",
+  "description": "Enterprise Test-as-Code & Quality Gate Plugin for DeepSeek Harness (dsh)",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh-plugin",
+    "cordis",
+    "test-as-code",
+    "quality-gate"
+  ],
+  "author": "Vanguard Platform",
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "cordis": "^3.0.0"
+  }
+}

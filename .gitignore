@@ -90,3 +90,7 @@ config_local.py
 
 # 测试文件
 test_*.log
+.codegraph/
+vendor/
+.codegraph/
+*.out
